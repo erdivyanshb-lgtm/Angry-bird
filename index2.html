@@ -1,0 +1,513 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #a1c4fd 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Nunito', sans-serif;
+            color: #333;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* Main content container - HIGHEST PRIORITY */
+        .main-content {
+            position: relative;
+            z-index: 1000;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 2px dashed #ff4d6d;
+        }
+        
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            color: #ff4d6d;
+            text-shadow: 3px 3px 0 #ffb3c1, 6px 6px 0 rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            animation: bounce 2s infinite alternate;
+        }
+        
+        h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
+            color: #4361ee;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 #a1c4fd;
+        }
+        
+        .birthday-message {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 2px dashed #ff4d6d;
+            animation: fadeIn 2s ease;
+        }
+        
+        .birthday-message p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: left;
+            color: #2d3748;
+            font-weight: 600;
+        }
+        
+        .special-message {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 5px solid #ff4d6d;
+        }
+        
+        .special-message h3 {
+            color: #ff4d6d;
+            margin-bottom: 10px;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .special-message p {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .apology-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 5px solid #4361ee;
+        }
+        
+        .apology-section h3 {
+            color: #4361ee;
+            margin-bottom: 10px;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .hearts {
+            font-size: 2rem;
+            color: #ff4d6d;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* BACKGROUND ANIMATIONS - LOWEST PRIORITY */
+        .background-animations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        /* Angry Birds with low opacity */
+        .angry-bird {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            opacity: 0.3;
+            pointer-events: auto;
+        }
+        
+        .red-bird {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23FF0000"/><circle cx="35" cy="40" r="10" fill="%23FFFFFF"/><circle cx="35" cy="40" r="5" fill="%23000000"/><circle cx="65" cy="40" r="10" fill="%23FFFFFF"/><circle cx="65" cy="40" r="5" fill="%23000000"/><path d="M40,65 Q50,75 60,65" stroke="%23000" stroke-width="3" fill="none"/></svg>');
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .yellow-bird {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23FFD700"/><circle cx="35" cy="40" r="10" fill="%23FFFFFF"/><circle cx="35" cy="40" r="5" fill="%23000000"/><circle cx="65" cy="40" r="10" fill="%23FFFFFF"/><circle cx="65" cy="40" r="5" fill="%23000000"/><path d="M40,65 Q50,75 60,65" stroke="%23000" stroke-width="3" fill="none"/></svg>');
+            top: 70%;
+            left: 10%;
+            animation-delay: 1s;
+        }
+        
+        .blue-bird {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%230088FF"/><circle cx="35" cy="40" r="10" fill="%23FFFFFF"/><circle cx="35" cy="40" r="5" fill="%23000000"/><circle cx="65" cy="40" r="10" fill="%23FFFFFF"/><circle cx="65" cy="40" r="5" fill="%23000000"/><path d="M40,65 Q50,75 60,65" stroke="%23000" stroke-width="3" fill="none"/></svg>');
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .black-bird {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23333"/><circle cx="35" cy="40" r="10" fill="%23FFFFFF"/><circle cx="35" cy="40" r="5" fill="%23000000"/><circle cx="65" cy="40" r="10" fill="%23FFFFFF"/><circle cx="65" cy="40" r="5" fill="%23000000"/><path d="M40,65 Q50,75 60,65" stroke="%23000" stroke-width="3" fill="none"/></svg>');
+            top: 75%;
+            right: 5%;
+            animation-delay: 3s;
+        }
+        
+        /* Balloons with low opacity */
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            animation: floatBalloon 8s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            opacity: 0.2;
+        }
+        
+        .balloon:after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .balloon1 {
+            background: radial-gradient(circle at 30% 30%, #ff4d6d, #ff002b);
+            top: 15%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+        
+        .balloon2 {
+            background: radial-gradient(circle at 30% 30%, #4361ee, #3a0ca3);
+            top: 60%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+        .balloon3 {
+            background: radial-gradient(circle at 30% 30%, #ffd700, #ff9e00);
+            top: 25%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+        
+        .balloon4 {
+            background: radial-gradient(circle at 30% 30%, #4cc9f0, #4361ee);
+            top: 65%;
+            right: 15%;
+            animation-delay: 6s;
+        }
+        
+        /* Floating hearts with low opacity */
+        .floating-heart {
+            position: absolute;
+            font-size: 24px;
+            animation: floatHeart 8s ease-in-out infinite;
+            opacity: 0.2;
+        }
+        
+        .heart1 { top: 25%; left: 8%; animation-delay: 0s; color: #ff4d6d; }
+        .heart2 { top: 65%; left: 25%; animation-delay: 1s; color: #4361ee; }
+        .heart3 { top: 15%; right: 25%; animation-delay: 2s; color: #ffd700; }
+        .heart4 { top: 55%; right: 8%; animation-delay: 3s; color: #4cc9f0; }
+        .heart5 { top: 40%; left: 35%; animation-delay: 4s; color: #7209b7; }
+        .heart6 { top: 30%; right: 35%; animation-delay: 5s; color: #f72585; }
+        
+        /* Love message hearts */
+        .love-message {
+            position: absolute;
+            font-size: 18px;
+            animation: floatMessage 10s ease-in-out infinite;
+            opacity: 0.3;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        }
+        
+        .love1 { top: 50%; left: 5%; animation-delay: 0s; color: #ff4d6d; }
+        .love2 { top: 80%; left: 30%; animation-delay: 2s; color: #4361ee; }
+        .love3 { top: 20%; right: 5%; animation-delay: 4s; color: #ffd700; }
+        .love4 { top: 70%; right: 30%; animation-delay: 6s; color: #4cc9f0; }
+        
+        /* Animations */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        @keyframes floatBalloon {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        @keyframes floatHeart {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        @keyframes floatMessage {
+            0% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-20px) rotate(5deg) scale(1.1); }
+            100% { transform: translateY(0) rotate(0deg) scale(1); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Confetti with low opacity */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.2;
+            z-index: 1;
+            border-radius: 50%;
+        }
+        
+        /* Click effect hearts - HIGH z-index */
+        .click-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 2000;
+            animation: clickFloat 2s ease-out forwards;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        @keyframes clickFloat {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .birthday-message p { font-size: 1.1rem; }
+            .angry-bird, .balloon { 
+                transform: scale(0.7); 
+            }
+            .angry-bird {
+                width: 60px;
+                height: 60px;
+            }
+            .floating-heart, .love-message {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .angry-bird, .balloon { 
+                transform: scale(0.5); 
+            }
+            .angry-bird {
+                width: 50px;
+                height: 50px;
+            }
+            .floating-heart, .love-message {
+                font-size: 14px;
+            }
+            .header {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BACKGROUND ANIMATIONS - LOWEST LAYER -->
+    <div class="background-animations">
+        <!-- Angry Birds Characters with low opacity -->
+        <div class="angry-bird red-bird"></div>
+        <div class="angry-bird yellow-bird"></div>
+        <div class="angry-bird blue-bird"></div>
+        <div class="angry-bird black-bird"></div>
+        
+        <!-- Balloons with low opacity -->
+        <div class="balloon balloon1"></div>
+        <div class="balloon balloon2"></div>
+        <div class="balloon balloon3"></div>
+        <div class="balloon balloon4"></div>
+        
+        <!-- Floating hearts with low opacity -->
+        <div class="floating-heart heart1">❤️</div>
+        <div class="floating-heart heart2">💖</div>
+        <div class="floating-heart heart3">💕</div>
+        <div class="floating-heart heart4">💝</div>
+        <div class="floating-heart heart5">🥰</div>
+        <div class="floating-heart heart6">😍</div>
+        
+        <!-- Love messages with low opacity -->
+        <div class="love-message love1">I LOVE YOU 💕</div>
+        <div class="love-message love2">YOU'RE SPECIAL ✨</div>
+        <div class="love-message love3">MY HEART IS YOURS ❤️</div>
+        <div class="love-message love4">FOREVER YOURS 💝</div>
+    </div>
+
+    <!-- MAIN CONTENT - HIGHEST PRIORITY -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Good Morning, My Love! 🌅</h1>
+            <h2>Happy Birthday Again! 🎂🎉</h2>
+        </div>
+        
+        <div class="birthday-message">
+        
+            <p>My dearest Angry Bird,</p>
+            <p>mera bacha ye sb feeling meri h but language chatgpt ki kyoki meri english achi mhi h n</p>
+            <p>I know you can be a little feisty sometimes (like our favorite red bird), but that's one of the million things I absolutely adore about you! On your special day, I wanted to send you this message to remind you how incredibly special you are to me.</p>
+            <p>Just like in Angry Birds, you always knock down all the obstacles in my life and fill it with joy, laughter, and love. Your energy is contagious, and your spirit is as vibrant as all the colorful birds in the game combined!</p>
+            
+            <div class="special-message">
+                <h3>Why You're So Special To Me:</h3>
+                <p>❤️ You have the most beautiful heart that cares so deeply</p>
+                <p>💖 Your laughter is my favorite sound in the world</p>
+                <p>✨ You make every ordinary moment extraordinary</p>
+                <p>🥰 You're my partner in all of life's adventures</p>
+                <p>💕 You understand me like no one else ever has</p>
+            </div>
+            
+            <div class="apology-section">
+                <h3>I'm So Sorry My Love 💔</h3>
+                <p>I feel terrible that I can't be there with you today to cut the cake and celebrate your special day in person.</p>
+                <p>Please know that even though I'm not physically there, my heart is with you every moment of your birthday. I'm thinking of you constantly and wishing I could be there to see your beautiful smile as you blow out the candles.</p>
+                <p>I promise we'll celebrate together soon and make up for this missed moment with something even more special!</p>
+            </div>
+            
+            <p>Today, I hope you feel as celebrated as you make me feel every single day. May your birthday be filled with all the happiness you bring into my life, and may this year be your best one yet!</p>
+            <p>With all my love, now and always...</p>
+        </div>
+        
+        <div class="hearts">❤️ 💖 🥰 💕 💝 ✨</div>
+    </div>
+
+    <script>
+        // Create confetti effect with low opacity
+        function createConfetti() {
+            const colors = ['#ff4d6d', '#4361ee', '#ffd700', '#4cc9f0', '#7209b7', '#f72585'];
+            
+            for (let i = 0; i < 60; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                document.body.appendChild(confetti);
+                
+                // Animation
+                const animation = confetti.animate([
+                    { transform: `translate(0, 0) rotate(0deg)`, opacity: 0.2 },
+                    { transform: `translate(${Math.random() * 100 - 50}px, ${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.9, 0.1)'
+                });
+                
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
+        
+        // Initial confetti
+        document.addEventListener('DOMContentLoaded', function() {
+            createConfetti();
+            
+            // More confetti every 5 seconds
+            setInterval(createConfetti, 5000);
+            
+            // Add click effect with floating hearts
+            document.body.addEventListener('click', function(e) {
+                const hearts = ['❤️', '💖', '🥰', '😍', '💕', '💝', '✨', 'I LOVE YOU', 'MISS YOU'];
+                const heart = document.createElement('div');
+                heart.className = 'click-heart';
+                
+                // Sometimes use text, sometimes use emoji
+                if (Math.random() > 0.5) {
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.fontSize = (Math.random() * 15 + 12) + 'px';
+                } else {
+                    heart.textContent = hearts[Math.floor(Math.random() * 7)]; // Only emojis
+                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                }
+                
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                heart.style.color = ['#ff4d6d', '#4361ee', '#ffd700', '#4cc9f0', '#7209b7', '#f72585'][Math.floor(Math.random() * 6)];
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    document.body.removeChild(heart);
+                }, 2000);
+            });
+        });
+        
+        // Make birds interactive (they can have normal opacity when clicked)
+        document.querySelectorAll('.angry-bird').forEach(bird => {
+            bird.addEventListener('click', function() {
+                // Temporarily increase opacity when clicked
+                this.style.opacity = '0.6';
+                this.style.animation = 'none';
+                
+                setTimeout(() => {
+                    this.style.animation = 'float 6s ease-in-out infinite';
+                }, 10);
+                
+                setTimeout(() => {
+                    this.style.opacity = '0.3'; // Return to low opacity
+                }, 2000);
+                
+                // Add a bounce effect
+                this.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(1.3)' },
+                    { transform: 'scale(1)' }
+                ], {
+                    duration: 400,
+                    easing: 'ease-out'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
